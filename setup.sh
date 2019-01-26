@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-export BELT_LIB="/usr/local/lib/belt.sh"
+export BELT_LIB="/usr/local/lib/belt"
 export BELT_REPO="https://github.com/belt-sh/belt.sh"
 
 function abort {
