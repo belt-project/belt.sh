@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-# shellcheck source=./tools/hello.sh
-source "$BELT_LIB/tools/hello.sh"
+for tool in "$BELT_LIB"/tools/**/*.sh; do
+  [ -e "$tool" ] || continue
+
+  # shellcheck disable=SC1090
+  source "$tool"
+done
