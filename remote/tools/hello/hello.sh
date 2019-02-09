@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 hello() {
-  echo "hello from remote tool: $1"
+	echo "hello from remote tool: $1"
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 systemctl_reload() {
-  systemctl daemon-reload &>/dev/null
+	systemctl daemon-reload &>/dev/null
 }
 
 systemctl_enable() {

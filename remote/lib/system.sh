@@ -9,11 +9,11 @@ system_abort() {
 system_command_exists() {
 	local cmd="$1"
 
-  if [ -x "$(command -v "$cmd")" ]; then
-    return 0
-  fi
+	if [ -x "$(command -v "$cmd")" ]; then
+		return 0
+	fi
 
-  return 1
+	return 1
 }
 
 system_process_running() {
