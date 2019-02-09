@@ -15,3 +15,9 @@ system_command_exists() {
 
   return 1
 }
+
+system_process_running() {
+	local name="$1"
+	ps -C "$name" &>/dev/null
+	return $?
+}
