@@ -7,3 +7,6 @@ indent_style = space
 
 [Makefile]
 indent_style = tab
+
+[*.sh]
+indent_style = tab
