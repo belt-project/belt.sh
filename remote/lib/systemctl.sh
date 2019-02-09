@@ -1,30 +1,30 @@
 #!/usr/bin/env bash
 
-systemd_reload() {
+systemctl_reload() {
   systemctl daemon-reload &>/dev/null
 }
 
-systemd_enable() {
+systemctl_enable() {
 	local service="$1"
 	systemctl enable "$service" &>/dev/null
 }
 
-systemd_disable() {
+systemctl_disable() {
 	local service="$1"
 	systemctl disable "$service" &>/dev/null
 }
 
-systemd_start() {
+systemctl_start() {
 	local service="$1"
 	systemctl start "$service" &>/dev/null
 }
 
-systemd_stop() {
+systemctl_stop() {
 	local service="$1"
 	systemctl stop "$service" &>/dev/null
 }
 
-systemd_restart() {
+systemctl_restart() {
 	local service="$1"
 	systemctl restart "$service" &>/dev/null
 }
