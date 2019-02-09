@@ -22,3 +22,11 @@ belt_remote_exec() {
 	# Re-enable exit on error.
 	set -e
 }
+
+belt_remote_upload() {
+	local source="$1"
+	local target="$2"
+
+	scp -P "$_BELT_SSH_PORT" -r "$source" "$_BELT_SSH_USER@$_BELT_SSH_HOST:$target" &>/dev/null \
+		|| belt_abort "remote upload failed"
+}
