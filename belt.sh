@@ -5,7 +5,7 @@ export _BELT_SSH_HOST
 export _BELT_SSH_PORT
 
 # shellcheck disable=SC1090
-for file in "$BELT_LIB"/lib/*.sh; do source "$file"; done
+for file in "$BELT_LIB"/internal/*.sh; do source "$file"; done
 
 # shellcheck disable=SC1090
 for file in "$BELT_LIB"/shims/*.sh; do source "$file"; done
