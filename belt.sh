@@ -15,10 +15,10 @@ belt_begin_session() {
   _BELT_SSH_HOST="$2"
   _BELT_SSH_PORT="${3:-22}"
 
-	local local_dir="$BELT_LIB/tools"
+	local local_dir="$BELT_LIB/remote"
 	local remote_dir="$_BELT_SSH_USER@$_BELT_SSH_HOST:/tmp/belt"
 
-	scp -P "$_BELT_SSH_PORT" -r "$local_dir" "$remote_dir" &>/dev/null || belt_abort "tools upload failed"
+	scp -P "$_BELT_SSH_PORT" -r "$local_dir" "$remote_dir" &>/dev/null || belt_abort "library upload failed"
 }
 
 belt_end_session() {
