@@ -1,41 +1,31 @@
 #!/usr/bin/env bash
 
-caddy_install() {
+_caddy_internal() {
+	local cmd="$1"
+
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
 		source /tmp/belt/tools/caddy/caddy.sh
-		caddy_install
+		"$cmd"
 	SCRIPT
+}
+
+caddy_install() {
+	_caddy_internal "${FUNCNAME[0]}"
 }
 
 caddy_uninstall() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
-		caddy_uninstall
-	SCRIPT
+	_caddy_internal "${FUNCNAME[0]}"
 }
 
 caddy_start() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
-		caddy_start
-	SCRIPT
+	_caddy_internal "${FUNCNAME[0]}"
 }
 
 caddy_stop() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
-		caddy_stop
-	SCRIPT
+	_caddy_internal "${FUNCNAME[0]}"
 }
 
 caddy_restart() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
-		caddy_restart
-	SCRIPT
+	_caddy_internal "${FUNCNAME[0]}"
 }
