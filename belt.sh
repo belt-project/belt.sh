@@ -11,7 +11,7 @@ for file in "$BELT_LIB"/local/lib/*.sh; do source "$file"; done
 for file in "$BELT_LIB"/local/shims/*.sh; do source "$file"; done
 
 belt_begin_session() {
-	trap belt_cleanup_session EXIT
+	trap belt_cleanup_session EXIT INT
 
 	_BELT_SSH_USER="$1"
 	_BELT_SSH_HOST="$2"
