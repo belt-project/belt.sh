@@ -8,7 +8,7 @@ archive_upload() {
 	local path="$1"
 
 	_BELT_APP_NAME=$(basename "$path" .tar.gz)
-	_BELT_ARCHIVE_PATH="/tmp/$(basename $path)"
+	_BELT_ARCHIVE_PATH="/tmp/$(basename "$path")"
 	_BELT_ARCHIVE_EXTRACTED_PATH="/tmp/$_BELT_APP_NAME-belt"
 
 	belt_remote_upload "$path" "$_BELT_ARCHIVE_PATH"
