@@ -31,9 +31,9 @@ caddy_install() {
 	chown root:root "$CADDY_SERVICE_FILE"
 	chmod 744 "$CADDY_SERVICE_FILE"
 
-	systemctl_reload || system_abort "systemd reload failed"
+	systemcd_reload || system_abort "systemd reload failed"
 
-	systemctl_enable "$CADDY_SERVICE" || system_abort "systemd enable failed"
+	systemd_unit_enable "$CADDY_SERVICE" || system_abort "systemd enable failed"
 }
 
 caddy_uninstall() {
@@ -41,19 +41,19 @@ caddy_uninstall() {
 		caddy_stop
 	fi
 
-	systemctl_disable "$CADDY_SERVICE" || true
+	systemd_unit_disable "$CADDY_SERVICE" || true
 
 	rm -fr "$CADDY_BINARY" "$CADDY_CONFIG_DIR" "$CADDY_SSL_DIR" "$CADDY_SERVICE_FILE" &>/dev/null
 }
 
 caddy_start() {
-	systemctl_start "$CADDY_SERVICE" || system_abort "caddy start failed"
+	systemd_unit_start "$CADDY_SERVICE" || system_abort "caddy start failed"
 }
 
 caddy_stop() {
-	systemctl_stop "$CADDY_SERVICE" || system_abort "caddy stop failed"
+	systemd_unit_stop "$CADDY_SERVICE" || system_abort "caddy stop failed"
 }
 
 caddy_restart() {
-	systemctl_restart "$CADDY_SERVICE" || system_abort "caddy restart failed"
+	systemd_unit_restart "$CADDY_SERVICE" || system_abort "caddy restart failed"
 }
