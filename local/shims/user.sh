@@ -5,6 +5,6 @@ user_add() {
 
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
-		adduser --no-create-home --disabled-login "$1" &>/dev/null
+		id -u "$user" &>/dev/null || adduser --no-create-home --disabled-login "$user" &>/dev/null
 	SCRIPT
 }
