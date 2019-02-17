@@ -22,5 +22,5 @@ belt_begin_session() {
 }
 
 belt_cleanup_session() {
-	belt_remote_exec "rm -rf /tmp/belt"
+	belt_remote_exec "rm -rf /tmp/belt $_BELT_ARCHIVE_PATH $_BELT_ARCHIVE_EXTRACTED_PATH"
 }
