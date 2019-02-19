@@ -31,7 +31,7 @@ caddy_install() {
 	chown root:root "$CADDY_SERVICE_FILE"
 	chmod 744 "$CADDY_SERVICE_FILE"
 
-	systemcd_reload || system_abort "systemd reload failed"
+	systemd_reload || system_abort "systemd reload failed"
 
 	systemd_unit_enable "$CADDY_SERVICE" || system_abort "systemd enable failed"
 }
