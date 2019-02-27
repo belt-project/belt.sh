@@ -24,3 +24,13 @@ app_set_permissions() {
 		chmod -R 770 "/app/$_BELT_APP_NAME"
 	SCRIPT
 }
+
+app_add_caddy_vhost() {
+	local vhost="${1:-"Caddyfile"}"
+
+	belt_remote_exec <<-SCRIPT
+		source /tmp/belt/env.sh
+		source /tmp/belt/lib/caddy.sh
+		cp "$_BELT_ARCHIVE_EXTRACTED_PATH/$vhost" "\$CADDY_CONFIG_DIR/vhosts/$_BELT_ARCHIVE_BASENAME.caddy"
+	SCRIPT
+}
