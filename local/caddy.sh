@@ -5,7 +5,8 @@ _caddy_internal() {
 
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
+		source /tmp/belt/lib/systemd.sh
+		source /tmp/belt/lib/caddy.sh
 		"$cmd"
 	SCRIPT
 }
@@ -35,7 +36,7 @@ caddy_add_vhost() {
 
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
-		source /tmp/belt/tools/caddy/caddy.sh
+		source /tmp/belt/lib/caddy.sh
 		cp "$_BELT_ARCHIVE_EXTRACTED_PATH/$vhost" "\$CADDY_CONFIG_DIR/vhosts/$_BELT_APP_NAME.caddy"
 	SCRIPT
 }

@@ -3,15 +3,15 @@
 export CADDY_BINARY="/usr/local/bin/caddy"
 export CADDY_CONFIG_DIR="/etc/caddy"
 export CADDY_SSL_DIR="/etc/ssl/caddy"
-export CADDY_SERVICE_FILE="$BELT_SYSTEMD_DIR/caddy.service"
+export CADDY_SERVICE_FILE="$BELT_SYSTEMD_PATH/caddy.service"
 export CADDY_SERVICE="caddy.service"
 
 caddy_install() {
-	if system_command_exists "caddy"; then
+	if command_exists "caddy"; then
 		return 0
 	fi
 
-	(curl -s https://getcaddy.com | bash -s personal &>/dev/null) || system_abort "caddy install failed"
+	(curl -s https://getcaddy.com | bash -s personal &>/dev/null) || abort "caddy install failed"
 
 	chown root:root "$CADDY_BINARY"
 	chmod 755 "$CADDY_BINARY"
@@ -25,19 +25,19 @@ caddy_install() {
 	chown -R www-data:root "$CADDY_SSL_DIR"
 	chmod 770 "$CADDY_SSL_DIR"
 
-	cp "$BELT_TOOLS_PATH/caddy/Caddyfile" "$CADDY_CONFIG_DIR/Caddyfile"
+	cp "$BELT_LIB_PATH/caddy/Caddyfile" "$CADDY_CONFIG_DIR/Caddyfile"
 
-	cp "$BELT_TOOLS_PATH/caddy/caddy.service" "$CADDY_SERVICE_FILE"
+	cp "$BELT_LIB_PATH/caddy/caddy.service" "$CADDY_SERVICE_FILE"
 	chown root:root "$CADDY_SERVICE_FILE"
 	chmod 744 "$CADDY_SERVICE_FILE"
 
-	systemd_reload || system_abort "systemd reload failed"
+	systemd_reload || abort "systemd reload failed"
 
-	systemd_unit_enable "$CADDY_SERVICE" || system_abort "systemd enable failed"
+	systemd_unit_enable "$CADDY_SERVICE" || abort "systemd enable failed"
 }
 
 caddy_uninstall() {
-	if system_process_running "caddy"; then
+	if process_running "caddy"; then
 		caddy_stop
 	fi
 
@@ -47,13 +47,13 @@ caddy_uninstall() {
 }
 
 caddy_start() {
-	systemd_unit_start "$CADDY_SERVICE" || system_abort "caddy start failed"
+	systemd_unit_start "$CADDY_SERVICE" || abort "caddy start failed"
 }
 
 caddy_stop() {
-	systemd_unit_stop "$CADDY_SERVICE" || system_abort "caddy stop failed"
+	systemd_unit_stop "$CADDY_SERVICE" || abort "caddy stop failed"
 }
 
 caddy_restart() {
-	systemd_unit_restart "$CADDY_SERVICE" || system_abort "caddy restart failed"
+	systemd_unit_restart "$CADDY_SERVICE" || abort "caddy restart failed"
 }

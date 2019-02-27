@@ -1,9 +1,27 @@
 #!/usr/bin/env bash
 
 export BELT_PATH="/tmp/belt"
-export BELT_TOOLS_PATH="$BELT_PATH/tools"
+export BELT_LIB_PATH="$BELT_PATH/lib"
+export BELT_SYSTEMD_PATH="/etc/systemd/system"
 
-export BELT_SYSTEMD_DIR="/etc/systemd/system"
+abort() {
+	local msg="$1"
+	echo "belt: $msg"
+	exit 1
+}
 
-# shellcheck disable=SC1090
-for lib in "$BELT_PATH"/lib/*.sh; do source "$lib"; done
+command_exists() {
+	local cmd="$1"
+
+	if [ -x "$(command -v "$cmd")" ]; then
+		return 0
+	fi
+
+	return 1
+}
+
+process_running() {
+	local name="$1"
+	ps -C "$name" &>/dev/null
+	return $?
+}
