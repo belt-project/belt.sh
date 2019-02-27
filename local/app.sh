@@ -1,26 +1,21 @@
 #!/usr/bin/env bash
 
+app_upload() {
+	local src="$1"
+	archive_upload "$src"
+}
+
 app_copy_files() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		mkdir -p "/app/$_BELT_APP_NAME"
-		for file in $@; do
-			cp "$_BELT_ARCHIVE_EXTRACTED_PATH/\$file" "/app/$_BELT_APP_NAME/"
-		done
-	SCRIPT
+	local src="$1"
+	archive_copy_file "$src" "/app/$_BELT_ARCHIVE_BASENAME"
 }
 
-app_copy_directories() {
-	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		mkdir -p "/app/$_BELT_APP_NAME"
-		for dir in $@; do
-			cp -a "$_BELT_ARCHIVE_EXTRACTED_PATH/\$dir/." "/app/$_BELT_APP_NAME/"
-		done
-	SCRIPT
+app_copy_directory() {
+	local src="$1"
+	archive_copy_directory "$src" "/app/$_BELT_ARCHIVE_BASENAME"
 }
 
-app_setup_permissions() {
+app_set_permissions() {
 	local user="$1"
 
 	belt_remote_exec <<-SCRIPT
