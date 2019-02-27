@@ -31,7 +31,7 @@ caddy_restart() {
 }
 
 caddy_add_vhost() {
-	local vhost="${1:-"$_BELT_APP_NAME.caddy"}"
+	local vhost="${1:-"Caddyfile"}"
 
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
