@@ -23,6 +23,10 @@ systemd_unit_stop() {
 	_systemd_internal "${FUNCNAME[0]}" "$@"
 }
 
+systemd_unit_restart() {
+	_systemd_internal "${FUNCNAME[0]}" "$@"
+}
+
 systemd_add_unit() {
 	local unit="$1"
 
