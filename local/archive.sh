@@ -20,7 +20,9 @@ archive_upload() {
 		tar -zxf "$_BELT_ARCHIVE_PATH" -C "$_BELT_ARCHIVE_EXTRACTED_PATH"
 	SCRIPT
 
-	[[ -n $dest ]] && _BELT_ARCHIVE_EXTRACTED_PATH=""
+	if [[ -n $dest ]]; then
+		_BELT_ARCHIVE_EXTRACTED_PATH=""
+	fi
 }
 
 archive_copy_file() {
