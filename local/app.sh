@@ -20,8 +20,8 @@ app_set_permissions() {
 
 	belt_remote_exec <<-SCRIPT
 		source /tmp/belt/env.sh
-		chown -R "$user" "/app/$_BELT_APP_NAME"
-		chmod -R 770 "/app/$_BELT_APP_NAME"
+		chown -R "$user" "/app/$_BELT_ARCHIVE_BASENAME"
+		chmod -R 770 "/app/$_BELT_ARCHIVE_BASENAME"
 	SCRIPT
 }
 
