@@ -5,7 +5,7 @@ app_upload() {
 	archive_upload "$src"
 }
 
-app_copy_files() {
+app_copy_file() {
 	local src="$1"
 	archive_copy_file "$src" "/app/$_BELT_ARCHIVE_BASENAME"
 }
