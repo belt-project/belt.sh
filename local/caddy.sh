@@ -4,9 +4,9 @@ _caddy_internal() {
 	local cmd="$1"
 
 	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/lib/systemd.sh
-		source /tmp/belt/lib/caddy.sh
+		source "$_BELT_REMOTE_LIB_PATH/env.sh"
+		source "$_BELT_REMOTE_LIB_PATH/lib/systemd.sh"
+		source "$_BELT_REMOTE_LIB_PATH/lib/caddy.sh"
 		"$cmd"
 	SCRIPT
 }

@@ -15,7 +15,7 @@ archive_upload() {
 	belt_remote_upload "$src" "$_BELT_ARCHIVE_PATH"
 
 	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
+		source "$_BELT_REMOTE_LIB_PATH/env.sh"
 		mkdir -p "$_BELT_ARCHIVE_EXTRACTED_PATH"
 		tar -zxf "$_BELT_ARCHIVE_PATH" -C "$_BELT_ARCHIVE_EXTRACTED_PATH"
 	SCRIPT
@@ -33,7 +33,7 @@ archive_copy_file() {
 	local dest="$2"
 
 	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
+		source "$_BELT_REMOTE_LIB_PATH/env.sh"
 		mkdir -p "$dest"
 		cp "$_BELT_ARCHIVE_EXTRACTED_PATH/$src" "$dest/"
 	SCRIPT
@@ -47,7 +47,7 @@ archive_copy_directory() {
 	local dest="$2"
 
 	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
+		source "$_BELT_REMOTE_LIB_PATH/env.sh"
 		mkdir -p "$dest"
 		cp -a "$_BELT_ARCHIVE_EXTRACTED_PATH/$src/." "$dest/"
 	SCRIPT

@@ -4,6 +4,8 @@ export _BELT_SSH_USER
 export _BELT_SSH_HOST
 export _BELT_SSH_PORT
 
+export _BELT_REMOTE_LIB_PATH
+
 # shellcheck disable=SC1090
 for file in "$BELT_LIB"/local/*.sh; do source "$file"; done
 
@@ -14,12 +16,14 @@ belt_begin_session() {
 	_BELT_SSH_HOST="$2"
 	_BELT_SSH_PORT="${3:-22}"
 
+	_BELT_REMOTE_LIB_PATH="/tmp/$(basename $(mktemp))"
+
 	belt_cleanup_session
-	belt_remote_upload "$BELT_LIB/remote" "/tmp/belt"
+	belt_remote_upload "$BELT_LIB/remote" "$_BELT_REMOTE_LIB_PATH"
 }
 
 belt_cleanup_session() {
-	belt_remote_exec "rm -rf /tmp/belt $_BELT_ARCHIVE_PATH $_BELT_ARCHIVE_EXTRACTED_PATH"
+	belt_remote_exec "rm -rf $_BELT_REMOTE_LIB_PATH $_BELT_ARCHIVE_PATH $_BELT_ARCHIVE_EXTRACTED_PATH"
 }
 
 belt_abort() {

@@ -6,8 +6,8 @@ _postgres_internal() {
 	local args="$@"
 
 	belt_remote_exec <<-SCRIPT
-		source /tmp/belt/env.sh
-		source /tmp/belt/lib/postgres.sh
+		source "$_BELT_REMOTE_LIB_PATH/env.sh"
+		source "$_BELT_REMOTE_LIB_PATH/lib/postgres.sh"
 		"$cmd" $args
 	SCRIPT
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export BELT_PATH="/tmp/belt"
+export BELT_PATH="$(pwd)"
 export BELT_LIB_PATH="$BELT_PATH/lib"
 export BELT_SYSTEMD_PATH="/etc/systemd/system"
 
