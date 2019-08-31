@@ -3,7 +3,8 @@ set -e
 
 export BELT_REPO="https://github.com/belt-sh/belt.sh"
 export BELT_VERSION="master"
-export BELT_LIB="/usr/local/lib/belt/$BELT_VERSION"
+export BELT_LIB_PREFIX="/usr/local/lib"
+export BELT_LIB="$BELT_LIB_PREFIX/belt/$BELT_VERSION"
 
 bootstrap_abort() {
 	local msg="$1"
