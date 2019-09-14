@@ -20,12 +20,12 @@ belt_begin_session() {
 	_BELT_SSH_HOST="$2"
 	_BELT_SSH_PORT="${3:-22}"
 
-	_BELT_REMOTE_LIB_PATH="/tmp/$(basename "$(mktemp)")"
+	_BELT_REMOTE_LIB_PATH="/tmp/$(basename "$(mktemp -u)")"
 
 	ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "mkdir -p $_BELT_REMOTE_LIB_PATH"
 
 	if [[ -n "$BELT_TOOLBOX_TOOLS" ]]; then
-		_BELT_TOOLBOX_TMP_PATH="/tmp/$(basename "$(mktemp)")"
+		_BELT_TOOLBOX_TMP_PATH="/tmp/$(basename "$(mktemp -u)")"
 
 		_belt_upload_remote_toolbox
 	fi
