@@ -24,7 +24,7 @@ systemd_add_unit() {
 	local unit="$1"
 
 	belt_remote_exec <<-SCRIPT
-		cp "$BELT_ARCHIVE_EXTRACTED_PATH/$unit" "\$BELT_SYSTEMD_PATH/$BELT_ARCHIVE_BASENAME.service"
+		cp "$BELT_ARCHIVE_EXTRACTED_PATH/$unit" "/etc/systemd/system/$BELT_ARCHIVE_BASENAME.service"
 		systemctl daemon-reload &>/dev/null
 		systemctl enable "$BELT_ARCHIVE_BASENAME.service" &>/dev/null
 	SCRIPT
