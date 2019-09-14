@@ -44,11 +44,11 @@ belt_remote_exec() {
 	set +e
 
 	if [[ -n "$script" ]]; then
-		ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "cd $_BELT_REMOTE_LIB_PATH && bash -s" <<-SCRIPT
+		ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "cd $_BELT_REMOTE_LIB_PATH && pwd && bash -s" <<-SCRIPT
 			$script
 		SCRIPT
 	else
-		ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "cd $_BELT_REMOTE_LIB_PATH && bash -s" "$script"
+		ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "cd $_BELT_REMOTE_LIB_PATH && pwd && bash -s" "$script"
 	fi
 
 	# shellcheck disable=SC2181
