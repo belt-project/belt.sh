@@ -43,9 +43,8 @@ bootstrap() {
 		bootstrap_abort "git not found"
 	fi
 
-	if [[ -d "$BELT_LIB" ]]; then
+	if [[ -d "$BELT_PATH" ]]; then
 		if [[ "$BELT_VERSION" = "master" || ! "$BELT_VERSION" =~ ^v ]]; then
-			echo "Updating belt.sh..."
 			bootstrap_update
 		fi
 	fi
