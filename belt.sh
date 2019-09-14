@@ -22,7 +22,9 @@ belt_begin_session() {
 
 	_BELT_REMOTE_LIB_PATH="/tmp/$(basename "$(mktemp)")"
 
-	ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" mkdir -p "$_BELT_REMOTE_LIB_PATH"
+	ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "bash -s" <<-SCRIPT
+		mkdir -p "$_BELT_REMOTE_LIB_PATH"
+	SCRIPT
 
 	if [[ -n "$BELT_TOOLBOX_TOOLS" ]]; then
 		_BELT_TOOLBOX_TMP_PATH="/tmp/$(basename "$(mktemp)")"
