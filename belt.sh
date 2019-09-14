@@ -73,7 +73,10 @@ _belt_upload_remote_toolbox() {
 	# shellcheck disable=SC1090
 	for plugin in "${PLUGINS[@]}"; do
 		mkdir -p "$_BELT_TOOLBOX_TMP_PATH/$plugin"
-		cp -r "$BELT_TOOLBOX_PATH/$plugin/remote/" "$_BELT_TOOLBOX_TMP_PATH/$plugin/"
+
+		if [ -d "$BELT_TOOLBOX_PATH/$plugin/remote" ]; then
+			cp -r "$BELT_TOOLBOX_PATH/$plugin/remote/" "$_BELT_TOOLBOX_TMP_PATH/$plugin/"
+		fi
 	done
 
 	belt_remote_upload "$_BELT_TOOLBOX_TMP_PATH" "$_BELT_REMOTE_LIB_PATH/toolbox"
