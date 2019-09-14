@@ -22,6 +22,8 @@ belt_begin_session() {
 
 	_BELT_REMOTE_LIB_PATH="/tmp/$(basename "$(mktemp)")"
 
+	ssh -p "$_BELT_SSH_PORT" "$_BELT_SSH_USER@$_BELT_SSH_HOST" "mkdir -p $_BELT_REMOTE_LIB_PATH"
+
 	if [[ -n "$BELT_TOOLBOX_TOOLS" ]]; then
 		_BELT_TOOLBOX_TMP_PATH="/tmp/$(basename "$(mktemp)")"
 
@@ -74,7 +76,7 @@ _belt_upload_remote_toolbox() {
 	for plugin in "${PLUGINS[@]}"; do
 		mkdir -p "$_BELT_TOOLBOX_TMP_PATH/$plugin"
 
-		if [ -d "$BELT_TOOLBOX_PATH/$plugin/remote" ]; then
+		if [[ -d "$BELT_TOOLBOX_PATH/$plugin/remote" ]]; then
 			cp -r "$BELT_TOOLBOX_PATH/$plugin/remote/" "$_BELT_TOOLBOX_TMP_PATH/$plugin/"
 		fi
 	done
