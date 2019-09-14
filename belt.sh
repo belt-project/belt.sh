@@ -77,7 +77,7 @@ _belt_upload_remote_toolbox() {
 		mkdir -p "$_BELT_TOOLBOX_TMP_PATH/$plugin"
 
 		if [[ -d "$BELT_TOOLBOX_PATH/$plugin/remote" ]]; then
-			cp -r "$BELT_TOOLBOX_PATH/$plugin/remote/" "$_BELT_TOOLBOX_TMP_PATH/$plugin/"
+			cp -a "$BELT_TOOLBOX_PATH/$plugin/remote/." "$_BELT_TOOLBOX_TMP_PATH/$plugin/"
 		fi
 	done
 
