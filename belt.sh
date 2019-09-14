@@ -95,7 +95,13 @@ _belt_load_toolbox() {
 		unset IFS
 
 		# shellcheck disable=SC1090
-		for plugin in "${PLUGINS[@]}"; do source "$BELT_TOOLBOX_PATH/$plugin/local/plugin.sh"; done
+		for plugin in "${PLUGINS[@]}"; do
+			if [[ ! -d "$BELT_TOOLBOX_PATH/$plugin" ]]; then
+				belt_abort "plugin does not exist: $plugin"
+			fi
+
+			source "$BELT_TOOLBOX_PATH/$plugin/local/plugin.sh"
+		done
 	fi
 }
 
