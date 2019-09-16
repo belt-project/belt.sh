@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 set -e
 
-export BELT_REPO="https://github.com/belt-project/belt.sh"
-export BELT_VERSION="master"
+BELT_REPO="https://github.com/belt-project/belt.sh"
+BELT_VERSION="master"
 
-export BELT_PATH_PREFIX="${BELT_ENV_PATH_PREFIX:-"/usr/local/lib"}"
-export BELT_PATH="$BELT_PATH_PREFIX/belt/$BELT_VERSION"
+BELT_PATH_PREFIX="${BELT_ENV_PATH_PREFIX:-"/usr/local/lib"}"
+BELT_PATH="$BELT_PATH_PREFIX/belt/$BELT_VERSION"
 
-export BELT_TOOLBOX_REPO="${BELT_ENV_TOOLBOX_REPO:-"https://github.com/belt-project/toolbox"}"
-export BELT_TOOLBOX_TOOLS="$BELT_ENV_TOOLBOX_TOOLS"
+BELT_TOOLBOX_REPO="${BELT_ENV_TOOLBOX_REPO:-"https://github.com/belt-project/toolbox"}"
+BELT_TOOLBOX_TOOLS="$BELT_ENV_TOOLBOX_TOOLS"
 
-export BELT_TOOLBOX_PATH="$BELT_PATH_PREFIX/belt/toolbox"
+BELT_TOOLBOX_PATH="$BELT_PATH_PREFIX/belt/toolbox"
 
 bootstrap_abort() {
 	local msg="$1"

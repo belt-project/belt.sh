@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-export BELT_ARCHIVE_BASENAME
-export BELT_ARCHIVE_PATH
-export BELT_ARCHIVE_EXTRACTED_PATH
+BELT_ARCHIVE_BASENAME=""
+BELT_ARCHIVE_PATH=""
+BELT_ARCHIVE_EXTRACTED_PATH=""
 
 archive_upload() {
 	local src="$1"

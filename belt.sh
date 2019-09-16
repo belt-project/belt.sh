@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-export _BELT_SSH_USER
-export _BELT_SSH_HOST
-export _BELT_SSH_PORT
+_BELT_SSH_USER=""
+_BELT_SSH_HOST=""
+_BELT_SSH_PORT=""
 
-export _BELT_REMOTE_LIB_PATH
+_BELT_REMOTE_LIB_PATH=""
 
-export _BELT_TOOLBOX_TMP_PATH
+_BELT_TOOLBOX_TMP_PATH=""
 
 belt_cleanup_session() {
 	rm -rf "$_BELT_TOOLBOX_TMP_PATH"
