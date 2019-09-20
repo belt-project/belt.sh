@@ -12,7 +12,13 @@ systemd_unit_start() {
 
 systemd_unit_stop() {
 	local unit="$1"
-	belt_remote_exec "systemctl stop \"$unit\" &>/dev/null"
+	local ignore_errors="$2"
+
+	if [[ -n "$ignore_errors" ]]; then
+		belt_remote_exec "systemctl stop \"$unit\" &>/dev/null || true"
+	else
+		belt_remote_exec "systemctl stop \"$unit\" &>/dev/null"
+	fi
 }
 
 systemd_unit_restart() {
