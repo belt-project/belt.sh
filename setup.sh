@@ -19,22 +19,22 @@ bootstrap_abort() {
 }
 
 bootstrap_clone() {
-	echo "Cloning belt.sh..."
+	[[ -n "$BELT_ENV_DEBUG" ]] && echo "Cloning belt.sh..."
 	git clone -b "$BELT_VERSION" "$BELT_REPO" "$BELT_PATH" &>/dev/null || bootstrap_abort "git clone failed for belt"
 }
 
 bootstrap_update() {
-	echo "Updating belt.sh..."
+	[[ -n "$BELT_ENV_DEBUG" ]] && echo "Updating belt.sh..."
 	git -C "$BELT_PATH" pull &>/dev/null || bootstrap_abort "git pull failed for belt"
 }
 
 bootstrap_toolbox_clone() {
-	echo "Cloning toolbox..."
+	[[ -n "$BELT_ENV_DEBUG" ]] && echo "Cloning toolbox..."
 	git clone "$BELT_TOOLBOX_REPO" "$BELT_TOOLBOX_PATH" &>/dev/null || bootstrap_abort "git clone failed for toolbox"
 }
 
 bootstrap_toolbox_update() {
-	echo "Updating toolbox..."
+	[[ -n "$BELT_ENV_DEBUG" ]] && echo "Updating toolbox..."
 	git -C "$BELT_TOOLBOX_PATH" pull &>/dev/null || bootstrap_abort "git pull failed for toolbox"
 }
 
