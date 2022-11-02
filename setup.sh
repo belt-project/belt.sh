@@ -12,8 +12,6 @@ BELT_TOOLBOX_TOOLS="$BELT_ENV_TOOLBOX_TOOLS"
 
 BELT_TOOLBOX_PATH="$BELT_PATH_PREFIX/belt/toolbox"
 
-BELT_SCP_OPTS="${BELT_SCP_OPTIONS}"
-
 bootstrap_abort() {
 	local msg="$1"
 	echo "belt: $msg"
