@@ -26,6 +26,11 @@ systemd_unit_restart() {
 	belt_remote_exec "systemctl restart \"$unit\" &>/dev/null"
 }
 
+systemd_daemon_reload() {
+	local unit="$1"
+	belt_remote_exec "systemctl daemon-reload &>/dev/null"
+}
+
 systemd_add_unit() {
 	local unit="$1"
 
