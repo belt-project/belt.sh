@@ -4,7 +4,7 @@ set -e
 BELT_REPO="https://github.com/belt-project/belt.sh"
 BELT_VERSION="master"
 
-BELT_PATH_PREFIX="${BELT_ENV_PATH_PREFIX:-"/usr/local/lib"}"
+BELT_PATH_PREFIX="${BELT_ENV_PATH_PREFIX:-"/var/tmp"}"
 BELT_PATH="$BELT_PATH_PREFIX/belt/$BELT_VERSION"
 
 BELT_TOOLBOX_REPO="${BELT_ENV_TOOLBOX_REPO:-"https://github.com/belt-project/toolbox"}"
